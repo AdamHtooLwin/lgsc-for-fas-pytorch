@@ -16,8 +16,14 @@ from metrics import eval_from_scores
 def prepare_infer_dataloader(args: Namespace) -> DataLoader:
     transforms = get_test_augmentations(args.image_size)
     df = pd.read_csv(args.infer_df)
+
+    try:
+        face_detector = args.face_detector
+    except AttributeError:
+        face_detector = None
+
     dataset = Dataset(
-        df, args.root, transforms, args.face_detector, args.with_labels
+        df, args.root, transforms, face_detector, args.with_labels
     )
     dataloader = DataLoader(
         dataset,

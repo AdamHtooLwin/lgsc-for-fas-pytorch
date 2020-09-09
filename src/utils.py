@@ -1,4 +1,5 @@
 from torchvision.utils import make_grid
+import torch
 
 
 class GridMaker:
@@ -9,7 +10,8 @@ class GridMaker:
         b, c, h, w = images.shape
         images_min = images.view(b, -1).min(axis=1)[0][:, None]
         images_max = images.view(b, -1).max(axis=1)[0][:, None]
-        images = (images.view(b, -1) - images_min) / (images_max - images_min)
+        images = torch.true_divide(images.view(b, -1) - images_min, images_max - images_min)
+        # images = (images.view(b, -1) - images_min) / (images_max - images_min)
         images = images.reshape(b, c, h, w)
 
         b, c, h, w = cues.shape

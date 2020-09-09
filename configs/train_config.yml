@@ -29,10 +29,10 @@ cue_log_every: 100  # will log cues every cue_log_every batches. If 0, than won'
 #  device: *device
 
 train_df: "/root/datasets/surf/train_labels.csv"  # path to train csv file
-val_df: "/root/datasets/surf/test_labels.csv"  # path to validation csv file
+val_df: "/root/datasets/surf/val_labels.csv"  # path to validation csv file
 path_root: "/root/datasets/surf"  # prefix path to your images
 
-batch_size: 96  # batch size for both validation and train dataloader
+batch_size: 32  # batch size for both validation and train dataloader
 num_workers_train: 0  # param for training dataloader
 num_workers_val: 0  # param for validation dataloader
 

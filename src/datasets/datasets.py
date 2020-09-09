@@ -13,12 +13,12 @@ from albumentations.pytorch import ToTensorV2 as ToTensor
 def get_train_augmentations(image_size: int = 224):
     return A.Compose(
         [
-            A.CoarseDropout(20),
-            A.Rotate(30),
+            # A.CoarseDropout(20),
+            # A.Rotate(30),
             # A.RandomCrop(image_size, image_size, p=0.5),
             A.LongestMaxSize(image_size),
             A.PadIfNeeded(image_size, image_size, 0),
-            A.Normalize(),
+            # A.Normalize(),
             ToTensor(),
         ]
     )
@@ -29,7 +29,7 @@ def get_test_augmentations(image_size: int = 224):
         [
             A.LongestMaxSize(image_size),
             A.PadIfNeeded(image_size, image_size, 0),
-            A.Normalize(),
+            # A.Normalize(),
             ToTensor(),
         ]
     )
