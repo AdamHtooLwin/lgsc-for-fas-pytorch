@@ -2,8 +2,12 @@ from argparse import ArgumentParser, Namespace
 
 import safitty
 import pytorch_lightning as pl
+import os
 
 from pl_model import LightningModel
+
+os.environ['http_proxy'] = 'http://192.41.170.23:3128'
+os.environ['https_proxy'] = 'http://192.41.170.23:3128'
 
 
 if __name__ == "__main__":
@@ -19,5 +23,7 @@ if __name__ == "__main__":
         fast_dev_run=False,
         early_stop_callback=True,
         default_root_dir=configs.default_root_dir,
+        # gpus=-1,
+        # distributed_backend='dp'
     )
     trainer.fit(model)

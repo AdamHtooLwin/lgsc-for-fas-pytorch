@@ -15,7 +15,7 @@ def get_train_augmentations(image_size: int = 224):
         [
             A.CoarseDropout(20),
             A.Rotate(30),
-            A.RandomCrop(image_size, image_size, p=0.5),
+            # A.RandomCrop(image_size, image_size, p=0.5),
             A.LongestMaxSize(image_size),
             A.PadIfNeeded(image_size, image_size, 0),
             A.Normalize(),
@@ -59,8 +59,9 @@ class Dataset(torch.utils.data.Dataset):
 
     def __getitem__(self, item: int):
         path = os.path.join(self.root, self.df.iloc[item].path)
-        file = np.random.choice(os.listdir(path))
-        full_path = os.path.join(path, file)
+        parent_path, file_name = os.path.split(path)
+        file = np.random.choice(os.listdir(parent_path))
+        full_path = os.path.join(parent_path, file)
 
         image = Image.open(full_path)
         if self.with_labels:
@@ -95,3 +96,5 @@ class Dataset(torch.utils.data.Dataset):
             return image, target
         else:
             return image
+
+

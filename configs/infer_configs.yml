@@ -6,7 +6,7 @@ checkpoints: null  # path to pl checkpoint
 image_size: 224  # size of input image
 
 with_labels: True  # Whether your csv file has labels or not
-num_workers: 5  # param for infer dataloader
+num_workers: 0  # param for infer dataloader
 batch_size: 16  # batch size for infer dataloader
 
 # uncomment this, to use online face cropping

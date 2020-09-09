@@ -28,15 +28,15 @@ cue_log_every: 100  # will log cues every cue_log_every batches. If 0, than won'
 #  factor: 0.709
 #  device: *device
 
-train_df: null  # path to train csv file
-val_df: null  # path to validation csv file
-path_root: null  # prefix path to your images
+train_df: "/root/datasets/surf/train_labels.csv"  # path to train csv file
+val_df: "/root/datasets/surf/test_labels.csv"  # path to validation csv file
+path_root: "/root/datasets/surf"  # prefix path to your images
 
 batch_size: 96  # batch size for both validation and train dataloader
-num_workers_train: 3  # param for training dataloader
-num_workers_val: 3  # param for validation dataloader
+num_workers_train: 0  # param for training dataloader
+num_workers_val: 0  # param for validation dataloader
 
-default_root_dir: null  # path to save pytorch_lightning logs
+default_root_dir: "/root/lgsc-for-fas-pytorch/logs/"  # path to save pytorch_lightning logs
 max_epochs: 15  # max number of epochs to train (if doesn't achieved early stopping)
 
 use_balance_sampler: True  # You can try overcome class disbalance using balance sampler
